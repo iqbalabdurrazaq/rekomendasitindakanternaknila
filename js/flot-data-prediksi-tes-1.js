@@ -3,6 +3,7 @@ $(document).ready(function () {
   console.log("document ready");
 
   document.getElementById("avgN1").style.display = "none";
+  document.getElementById("avgLoop").style.display = "none";
   getHum();
   function getHum() {
     var xNo = new Array();
@@ -73,6 +74,7 @@ $(document).ready(function () {
     var mse = new Array();
     var tmpT = new Array();
     var rl = new Array();
+    var loop = new Array();
     var aa = 0;
     var bb = 0;
     var sumX = 0;
@@ -107,6 +109,7 @@ $(document).ready(function () {
       console.log(tmpI);
       tmpT[index] = tmpI + t[index];
       rl[index] = parseFloat(aa) + parseFloat(bb) * tmpT[index];
+      loop[index] = t[index];
     }
 
     console.log("Last T = " + lastT);
@@ -130,6 +133,7 @@ $(document).ready(function () {
     console.log(mse);
     console.log("------- Data Regresi Linier  ---------");
     console.log(rl);
+    console.log(loop);
 
     // Plot Ke Chart ------------------------------------
     var dataOri = [];
@@ -192,5 +196,7 @@ $(document).ready(function () {
     document.getElementById("avgData1").innerHTML =
       "Mean Square Error : " + vAve / n;
     document.getElementById("avgN1").innerHTML = rl;
+    document.getElementById("avgLoop").innerHTML = loop;
+    avgLoop;
   }
 });

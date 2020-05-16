@@ -4,10 +4,12 @@ function getKlasifikasi() {
   var vAmonia = Array();
   var dampak = Array();
   var keterangan = Array();
+  var loop = Array();
 
   vTemp = document.getElementById("avgN1").innerHTML.split(",").map(Number);
   vPh = document.getElementById("avgN2").innerHTML.split(",").map(Number);
   vAmonia = document.getElementById("avgN3").innerHTML.split(",").map(Number);
+  loop = document.getElementById("avgLoop").innerHTML.split(",").map(Number);
 
   var table = document.getElementById("dataTables-example");
   var x = document.getElementById("dataTables-example").rows.length;
@@ -20,7 +22,7 @@ function getKlasifikasi() {
     document.getElementById("dataTables-example").deleteRow(i - 1);
   }
 
-  for (let index = 0; index < vTemp.length; index++) {
+  for (let index = 0; index < loop.length; index++) {
     // console.log(parseFloat(vTemp[index]).toFixed(2));
     // console.log(parseFloat(vPh[index]).toFixed(2));
     // console.log(parseFloat(vAmonia[index]).toFixed(2));
@@ -122,7 +124,8 @@ function getKlasifikasi() {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    k = index + 11;
+    k = loop[loop.length - 1] + loop[index];
+
     cell1.innerHTML = k;
     cell2.innerHTML = keterangan[index];
     cell3.innerHTML = dampak[index];
